@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Mágica - Halan Moisés</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="setup-container" class="container">
+        <h1>✉️ Criar Nova Carta</h1>
+        <p class="subtitle">Personalize sua mensagem abaixo</p>
+        
+        <div class="form-group">
+            <label>De (Seu Nome):</label>
+            <input type="text" id="inputDe" placeholder="Ex: João">
+        </div>
+        
+        <div class="form-group">
+            <label>Para (Destinatário):</label>
+            <input type="text" id="inputPara" placeholder="Ex: Maria">
+        </div>
+        
+        <div class="form-group">
+            <label>Sua Mensagem:</label>
+            <textarea id="inputTexto" placeholder="Escreva algo especial..."></textarea>
+        </div>
+        
+        <button class="btn-preview" onclick="mostrarPrevia()">Ver Prévia da Carta</button>
+    </div>
+
+    <div id="card-container" class="container hidden">
+        <div class="envelope-wrapper" id="envelopeWrapper" onclick="toggleCarta()">
+            <div class="envelope">
+                <div id="hearts-container"></div>
+                <div class="paper" id="displayTexto"></div>
+                <div class="envelope-left"></div>
+                <div class="envelope-right"></div>
+                <div class="envelope-front"></div>
+                <div class="envelope-info">
+                    <p id="displayDe">De: </p>
+                    <p id="displayPara">Para: </p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="instruction" id="msg-instrucao">Clique na carta para abrir!</p>
+        
+        <div class="action-buttons" id="area-acoes">
+            <button class="btn-whatsapp" onclick="enviarWhatsapp()">Enviar Link por WhatsApp 📱</button>
+            <button class="btn-secondary" onclick="voltarParaEdicao()">⬅ Editar Informações</button>
+        </div>
+
+        <button class="btn-new-letter hidden" id="btn-novo-recebido" onclick="irParaCriar()">Também quero criar uma carta! ✨</button>
+    </div>
+
+    <footer>
+        Desenvolvido por <strong>Halan Moisés</strong>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
