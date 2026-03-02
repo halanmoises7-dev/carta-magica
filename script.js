@@ -6,7 +6,7 @@ window.onload = function() {
     const para = urlParams.get('para');
     const msg = urlParams.get('msg');
 
-    // Só exibimos se todos os campos existirem (Evita scripts vazios ou links quebrados)
+    // Só exibimos se todos os campos existirem
     if (de && para && msg) {
         exibirModoRecebido(de, para, msg);
     }
@@ -22,10 +22,18 @@ function mostrarPrevia() {
         return;
     }
 
-    // .innerText é SEGURO: ele converte qualquer tag <script> em texto puro e não executa nada
+    // Atualiza o papel interno da carta
     document.getElementById('displayDe').innerText = `De: ${de}`;
     document.getElementById('displayPara').innerText = `Para: ${para}`;
     document.getElementById('displayTexto').innerText = msg;
+
+    // --- ADIÇÃO: Atualiza a parte externa do envelope ---
+    if(document.getElementById('preview-from')) {
+        document.getElementById('preview-from').innerText = de;
+    }
+    if(document.getElementById('preview-to')) {
+        document.getElementById('preview-to').innerText = para;
+    }
 
     document.getElementById('setup-container').classList.add('hidden');
     document.getElementById('card-container').classList.remove('hidden');
@@ -46,8 +54,6 @@ function enviarWhatsapp() {
 
     const urlBase = window.location.origin + window.location.pathname;
     
-    // encodeURIComponent é essencial para segurança: 
-    // ele codifica caracteres especiais (como < > /) para que o navegador não os interprete mal
     const linkFinal = `${urlBase}?de=${encodeURIComponent(de)}&para=${encodeURIComponent(para)}&msg=${encodeURIComponent(msg)}`;
     
     const textoWhats = `Olá ${para}! ✉️ Enviei uma carta especial para você. Clique no link para abrir:\n\n${linkFinal}`;
@@ -56,10 +62,18 @@ function enviarWhatsapp() {
 }
 
 function exibirModoRecebido(de, para, msg) {
-    // Usamos .innerText aqui também para garantir que nada vindo da URL seja executado como código
+    // Atualiza o papel interno
     document.getElementById('displayDe').innerText = `De: ${de}`;
     document.getElementById('displayPara').innerText = `Para: ${para}`;
     document.getElementById('displayTexto').innerText = msg;
+
+    // --- ADIÇÃO: Atualiza a parte externa do envelope ao receber o link ---
+    if(document.getElementById('preview-from')) {
+        document.getElementById('preview-from').innerText = de;
+    }
+    if(document.getElementById('preview-to')) {
+        document.getElementById('preview-to').innerText = para;
+    }
 
     document.getElementById('setup-container').classList.add('hidden');
     document.getElementById('card-container').classList.remove('hidden');
@@ -80,7 +94,7 @@ function toggleCarta() {
 
 function lancarCoracoes() {
     const container = document.getElementById('hearts-container');
-    container.innerHTML = ''; // Aqui é seguro pois o conteúdo é controlado por nós (não vem do usuário)
+    container.innerHTML = ''; 
     for (let i = 0; i < 15; i++) {
         const h = document.createElement('div');
         h.classList.add('heart');

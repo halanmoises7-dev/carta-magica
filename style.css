@@ -1,122 +1,248 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap');
 
 :root {
-    --bg-color: #fceef5;
-    --env-color: #c9a07e;
-    --env-dark: #b8906c;
-    --paper-white: #fdfaf0;
-    --heart-red: #e74c3c;
-    --whatsapp-green: #25d366;
-    --preview-blue: #075e97;
+    --bg-color: #1a0b16; 
+    --bg-gradient: radial-gradient(circle at top, #2d142c 0%, #130611 100%);
+    --input-bg: rgba(255, 255, 255, 0.05); 
+    --input-border: rgba(231, 76, 60, 0.2);
+    --text-main: #fff5f7;
+    --text-muted: #a78b91;
+    --accent-pink: #ff758c; 
+    --accent-gradient: linear-gradient(135deg, #ff7e5f 0%, #ff7eb3 100%);
+    --romantic-red: #e74c3c;
+    --romantic-glow: rgba(255, 117, 140, 0.4);
+    --env-color: #d63031; 
+    --env-dark: #b22222;
+    --paper-white: #fffafa;
+    --heart-red: #ff4d4d; 
+    --whatsapp-green: #2ecc71;
 }
 
 body {
-    margin: 0; padding: 0;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    min-height: 100vh; background-color: var(--bg-color);
-    font-family: 'Poppins', sans-serif; overflow-x: hidden;
+    margin: 0; 
+    padding: 0;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden;
 }
 
 .hidden { display: none !important; }
 
-.container {
-    background: white; padding: 2rem; border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    text-align: center; width: 90%; max-width: 400px;
-    margin-bottom: 10px;
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; 
+    width: 100%;
 }
 
-h1 { color: #2d3436; margin: 0; }
-.subtitle { font-size: 0.8rem; color: #b2bec3; margin-bottom: 20px; }
+.container {
+    background: transparent;
+    padding: 1rem; 
+    text-align: center; 
+    width: 90%; 
+    max-width: 400px;
+}
+
+h1 { 
+    color: var(--text-main); 
+    margin: 0; 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(255, 117, 140, 0.3);
+}
+
+.subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
 
 .form-group { text-align: left; margin-bottom: 1rem; }
-label { font-size: 0.8rem; font-weight: 600; color: #636e72; }
+
+label { 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    color: var(--accent-pink); 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    margin-left: 8px;
+}
 
 input, textarea {
     width: 100%; padding: 12px; margin-top: 5px;
-    border: 2px solid #f1f2f6; border-radius: 10px;
-    box-sizing: border-box; font-family: inherit;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 15px;
+    box-sizing: border-box; 
+    font-family: inherit;
+    color: white;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
 }
 
-textarea { height: 100px; resize: none; }
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-pink);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px var(--romantic-glow);
+}
 
-button { cursor: pointer; border: none; font-weight: 600; transition: transform 0.2s; }
+textarea { height: 90px; resize: none; }
+
+button { cursor: pointer; border: none; font-weight: 600; transition: all 0.3s ease; border-radius: 15px; }
 button:active { transform: scale(0.95); }
 
-.btn-preview { width: 100%; padding: 15px; background: var(--preview-blue); color: white; border-radius: 10px; font-size: 1rem; }
-.btn-whatsapp { width: 100%; padding: 15px; background: var(--whatsapp-green); color: white; border-radius: 10px; font-size: 1rem; margin-top: 20px; }
-.btn-secondary { background: none; color: #b2bec3; text-decoration: underline; margin-top: 15px; }
-.btn-new-letter { background: #6c5ce7; color: white; padding: 10px 20px; border-radius: 20px; margin-top: 30px; }
+.btn-preview { 
+    width: 100%; padding: 14px; 
+    background: var(--accent-gradient); 
+    color: white; 
+    font-size: 1rem; 
+    box-shadow: 0 8px 20px rgba(255, 117, 140, 0.3);
+}
 
+/* --- BOTÃO WHATSAPP COMPACTO E ESTILIZADO --- */
+.btn-whatsapp { 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;              /* Deixa de ser 100% */
+    min-width: 220px;         /* Largura mínima confortável */
+    padding: 10px 24px;       /* Mais estreito verticalmente, mais largo horizontalmente */
+    background: transparent; 
+    color: var(--whatsapp-green); 
+    border: 1.5px solid var(--whatsapp-green);
+    font-size: 0.85rem; 
+    margin: 20px auto 0;      /* Centraliza com margem automática */
+    border-radius: 50px;      /* Estilo cápsula (totalmente redondo nas pontas) */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.1);
+}
+
+.btn-whatsapp:hover {
+    background: var(--whatsapp-green);
+    color: #130611;           /* Cor de fundo escura do site para contraste */
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary { 
+    background: none; 
+    color: var(--text-muted); 
+    text-decoration: underline; 
+    margin-top: 15px; 
+    font-size: 0.8rem;
+    display: block;
+    width: 100%;
+}
+
+/* --- ENVELOPE --- */
 .envelope-wrapper {
-    position: relative; width: 300px; height: 200px;
-    margin: 50px auto 0; cursor: pointer; perspective: 1000px;
+    position: relative; 
+    width: 300px; 
+    height: 200px;
+    margin: 80px auto 10px; 
+    cursor: pointer; 
+    perspective: 1000px;
 }
 
 .envelope {
-    position: relative; width: 100%; height: 100%;
-    background-color: var(--env-color); border-radius: 0 0 10px 10px;
+    position: relative; 
+    width: 100%; 
+    height: 100%;
+    background-color: var(--env-color); 
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 .envelope::before {
     content: ""; position: absolute; top: 0; left: 0; z-index: 5;
-    border-left: 150px solid transparent; border-right: 150px solid transparent;
-    border-top: 110px solid var(--env-dark); transform-origin: top;
+    border-left: 150px solid transparent; 
+    border-right: 150px solid transparent;
+    border-top: 110px solid var(--env-dark); 
+    transform-origin: top;
     transition: transform 0.5s ease;
+}
+
+.envelope::after {
+    content: "♥"; 
+    position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
+    width: 35px; height: 35px; background: white;
+    z-index: 6; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center;
+    color: var(--env-color); font-size: 18px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .envelope-front {
     position: absolute; bottom: 0; left: 0; z-index: 4;
     width: 0; height: 0;
-    border-left: 150px solid transparent; border-right: 150px solid transparent;
+    border-left: 150px solid transparent; 
+    border-right: 150px solid transparent;
     border-bottom: 110px solid var(--env-color);
 }
 
-.envelope-left {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 3;
-    border-left: 150px solid var(--env-color);
-    border-top: 100px solid transparent; border-bottom: 100px solid transparent;
-    box-sizing: border-box; opacity: 1; 
-}
-
-.envelope-right {
-    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
-    z-index: 3;
-    border-right: 150px solid var(--env-color);
-    border-top: 100px solid transparent; border-bottom: 100px solid transparent;
-    box-sizing: border-box; opacity: 1;
-}
-
 .envelope-info {
-    position: absolute; bottom: 15px; left: 15px; z-index: 6;
-    color: white; font-size: 0.8rem; text-align: left;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.75rem;
+    text-align: left;
+    pointer-events: none;
+    line-height: 1.4;
 }
+
+.envelope-info strong { color: white; font-weight: 600; }
+
+.envelope-left, .envelope-right {
+    position: absolute; top: 0; width: 0; height: 0; z-index: 3;
+    border-top: 100px solid transparent; 
+    border-bottom: 100px solid transparent;
+}
+
+.envelope-left { left: 0; border-left: 150px solid var(--env-color); }
+.envelope-right { right: 0; border-right: 150px solid var(--env-color); }
 
 .paper {
-    position: absolute; top: 10px; left: 15px;
-    width: 270px; height: 170px; background: var(--paper-white);
-    padding: 15px; box-sizing: border-box; z-index: 2;
+    position: absolute; 
+    top: 10px; left: 15px;
+    width: 270px; 
+    height: 170px; 
+    background: var(--paper-white);
+    padding: 15px; 
+    box-sizing: border-box; 
+    z-index: 2;
     transition: transform 0.7s ease-in-out, z-index 0.3s;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Dancing Script', cursive; font-size: 1.1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Dancing Script', cursive; 
+    font-size: 1.1rem;
+    color: #444; 
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     overflow-y: auto;
 }
 
 .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 1; }
 .envelope-wrapper.open .paper { 
-    transform: translateY(-100px);
+    transform: translateY(-100px); 
     z-index: 7; 
 }
 
-.instruction { margin-top: 25px; color: #636e72; font-size: 0.9rem; }
+.instruction { margin: 10px 0 20px; color: var(--accent-pink); font-size: 0.85rem; font-style: italic; }
 
 #hearts-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; pointer-events: none; }
 .heart {
     position: absolute; width: 15px; height: 15px; 
     background: var(--heart-red);
-    transform: rotate(-45deg); opacity: 0; animation: float 2s ease-out forwards;
+    transform: rotate(-45deg); opacity: 0; animation: float 2.5s ease-out forwards;
 }
 .heart::before, .heart::after { 
     content: ""; position: absolute; width: 15px; height: 15px; 
@@ -126,8 +252,14 @@ button:active { transform: scale(0.95); }
 .heart::after { top: 0; left: 8px; }
 
 @keyframes float {
-    0% { transform: translateY(0) rotate(-45deg) scale(1); opacity: 1; }
-    100% { transform: translateY(-150px) rotate(-45deg) scale(0); opacity: 0; }
+    0% { transform: translateY(0) rotate(-45deg) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-200px) rotate(-15deg) scale(0); opacity: 0; }
 }
 
-footer { padding: 15px; font-size: 0.8rem; color: #636e72; }
+footer { 
+    padding: 10px; 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+    width: 100%;
+    text-align: center;
+}
